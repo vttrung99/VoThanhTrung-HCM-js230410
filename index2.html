@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .register{
+        margin-left: 20px;
+    }
+    input{
+        outline: none;
+        padding: 5px;
+    }
+    button{
+        border: none;
+        padding: 5px;
+    }
+</style>
+<body>
+   <div class="register">
+        <label for=""> nhập email </label> <br>
+        <input id="email" type="text" placeholder="nhập email"> <br>
+        <label for="">password</label> <br>
+        <input id="password" type="text" placeholder="mời nhập mật khẩu "> <br>
+        <label for=""> confirm password</label> <br>
+        <input id="confirmPassword" type="text" placeholder="nhập lại mật khẩu"> <br>
+        <button onclick="addUser()">register</button>
+       <p> bạn đã có tài khoản <a href="./index1.html">login?</a></p>
+   </div>
+   <script>
+    /* 
+        các bước làm
+        bước 1: khởi tạo 1 mảng để lưu danh sách user đã đăng kí
+        bước 2: lấy thông tin người dùng nhập vào!
+     */
+    //lấy ở trên local về
+  
+    let listUserRegisters=JSON.parse(localStorage.getItem("listUserRegisters"));
+    if(listUserRegisters==null){
+        listUserRegisters=[];
+    }
+    function addUser() {
+        
+        let valueEmail=document.getElementById("email").value;
+        let valuePassword = document.getElementById("password").value;
+        
+        let valueConfirmPassword = document.getElementById("confirmPassword").value;
+        if(valueEmail==""||valuePassword==""||valueConfirmPassword==""){
+            
+            alert("Vui lòng nhập đầy đủ!")
+            return;
+        }
+        
+        if(valuePassword!=valueConfirmPassword){
+            console.log("55555");
+            alert("Mật khẩu xác nhận sai!")
+            return;
+        }
+        let obj={
+            email:valueEmail,
+            password:valuePassword,
+        }
+        if(valuePassword == valueConfirmPassword){
+            //kiểm tra xem email đã tồn tại hay chưa rồi mới push vào
+            let flag= true;
+            for (let i = 0; i< listUserRegisters.length; i++) {
+                    if(listUserRegisters[i].email==valueEmail){
+                            alert("email đã tồn tại!");
+                            flag=false;
+                            break;
+                    }
+            }
+            if(flag){
+                  listUserRegisters.push(obj);
+                  // lưu lại trên local storage
+                  // khi lưu trên local dưới dạng mảng thì phải chuyển sang dạng JSON 
+                  localStorage.setItem("listUserRegisters",JSON.stringify(listUserRegisters));
+                  // khi lưu xong phải chuyển trang sang trang login 
+                  window.location.href="./index1.html"
+            }
+            console.log(listUserRegisters);
+        }
+    }
+   </script>
+</body>
+</html>

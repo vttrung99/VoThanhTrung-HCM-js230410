@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{  
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .photo{
+        width: 100%;
+        height:auto;
+        
+        display: flex;
+        
+        background-image: url('https://1.bp.blogspot.com/-a71p9zvla98/UkP4-cPfK4I/AAAAAAAAAg8/va9AmdChErg/s1600/anh-dep-hinh-nen-thien-nhien-0.jpg');
+        justify-content: space-evenly; 
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    /* .div{
+        width: 400px;
+        height: 100px;
+        background-color: aquamarine;
+        position: relative;
+        border: 1px solid black;
+        object-fit: cover;
+    } */
+    .item{
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+        border: 1px solid beige;
+        position: relative;
+    }
+    div{
+        width: 300px;
+        height: 300px;
+        position: relative;
+     
+        border: 1px solid blue;
+        object-fit: cover;/* ảnh này vừa khung */
+
+    }
+    /* img{
+        width: 100%;
+        height: 100%;
+        
+        object-fit: cover;
+    } */
+    .bottom{
+        width: 10px;
+        height: 10px;
+        text-decoration: 1;
+        position: relative;
+        left: 0px;
+        top: -300px;
+        
+    }
+    .bottom1{
+        color: green;
+        width: 100px;
+        height: 20px;
+        text-decoration: 1;
+        position: relative;
+        left: 0px;
+        top: -200px;
+        
+    }
+    .kichthuoc{
+        width: 300px;
+        height: 400px;
+        background-color: black;
+    }
+    .h{
+        width: 100%;
+        height: 100%;
+        /* object-fit: cover; */
+    }
+    .menu{
+     background-color: aquamarine;
+    }
+
+</style>
+<body>
+    
+        <!-- <img class="h" src="./image/lcd.jpg" alt=""> -->
+            
+            <h1 style="text-align: center;">
+                Cửa hàng điện tử. net
+            </h1><br>
+            <div class="photo trung" id="addmenu"> 
+                <div class="div">  
+                        <div class="khichthuoc"><img class="h" src="./image/arduinomega.jpg" alt=""></div>
+                    <div class="bottom"><button onclick="test(1)">arduinomega</button></div>
+                    
+                </div>
+                <div class="div">
+                        <div class="khichthuoc"><img class="h" src="./image/arduinouno.jpg" alt=""></div>
+                        <div class="bottom"><button onclick="test(2)">arduinouno</button></div>
+                </div>
+                <div class="div">
+                        <div class="khichthuoc"><img class="h" src="./image/arduinonano.jpg" alt=""></div>
+                        <div class="bottom"><button onclick="test(3)">arduinonano</button></div>
+                </div>
+                <div class="div">
+                        <div class="khichthuoc"><img class="h" src="./image/i2c.jpg" alt=""></div>
+                        <div class="bottom"><button onclick="test(4)">I2c</button></div>
+                </div>
+                <div class="div">
+                        <div class="khichthuoc"><img class="h" src="./image/lcd.jpg" alt=""></div>
+                        <div class="bottom"><button onclick="test(4)">Lcd</button></div>
+                </div>
+                <div class="div">
+                        <div class="khichthuoc"><img class="h" src="./image/arduinonano.jpg" alt=""></div>
+                        <div class="bottom"><button onclick="test(5)">arduinonano</button></div>
+                </div>
+                <div class="div">
+                        <div class="khichthuoc"><img class="h" src="./image/arduinomega.jpg" alt=""></div>
+                        <div class="bottom"><button onclick="test(6)">arduinomega</button></div>
+                </div>
+                <div class="div">
+                        <div class="khichthuoc"><img class="h" src="./image/arduinouno.jpg" alt=""></div>
+                        <div class="bottom"><button onclick="test(7)">arduinouno</button></div>
+                </div>
+                <div class="div">
+                        <div class="khichthuoc"><img class="h" src="./image/arduinonano.jpg" alt=""></div>
+                        <div class="bottom"><button onclick="test(8)">arduinonano</button></div>
+                </div>
+                </div>
+               
+        <script>
+            let array=[{
+            boad:"arduinomega",
+            money:"200.000vnd" 
+            },{ 
+            boad:"arduinouno",
+            money:"200.000vnd" 
+            },
+            {
+            boad:"arduinonano",
+            money:"200.000vnd" 
+            },
+            {
+            boad:"I2c",
+            money:"200.000vnd" 
+            },
+            {
+            boad:"Lcd",
+            money:"200.000vnd" 
+            },
+            {
+            boad:"arduinonano",
+            money:"200.000vnd" 
+            
+            },
+            {
+                boad:"arduinouno",
+            money:"200.000vnd" 
+            },
+            {
+            boad:"arduinonano",
+            money:"200.000vnd" 
+            }
+            
+            ]
+            function test(num) {
+                let listUserRegisters= JSON.parse(localStorage.getItem("listUserRegisters"));
+                    if (listUserRegisters==null) {
+                        window.location.href="./index1.html"
+                    }
+                    
+                    render(num)
+            }
+            count=0
+            function tru(){
+               
+               if(count<0){
+                 count=10
+                
+                 }
+                 count--;
+                 console.log("slshdjkfgskhfshd");
+                 document.getElementById("soLuong").innerHTML=count
+                 render()
+            }
+            
+            function render(numss){
+                let result=""
+                    for (let i = 0; i < 9; i++) {
+                        if(i==numss-1){
+                            let getClass=document.getElementsByClassName("trung")
+                            console.log("ok");
+                            getClass[0].classList.remove("photo")
+                            result+=
+                            `
+                             
+                        <div class="khichthuoc">${array[i].boad}</div>
+                    <div class="bottom1">${array[i].money}</div>
+                    <button onclick="tru">-</button>
+                    <button id="soLuong">${count}</button>
+                    <button onclick="cong">+</button>
+                            `
+                        }
+                        document.getElementById("addmenu").innerHTML=result
+                    }
+            }
+        </script>
+</body>
+</html>

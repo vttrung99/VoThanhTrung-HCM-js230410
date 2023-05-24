@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">userName</label><br>
+    <input id="userName" type="text"> <br>
+    <label for=""> password</label> <br>
+    <input id="password" type="text"> <br>
+    <button onclick="addUser()">login </button>
+    <p>bạn chưa có tài khoản <a href="./index2.html"> register?</a></p>
+    <script>
+        function addUser() {
+        let listUserRegisters = JSON.parse(localStorage.getItem("listUserRegisters"))           
+        let valueEmail=document.getElementById("userName").value;
+        let valuePassword = document.getElementById("password").value;
+        if(listUserRegisters==null){
+            alert("sai tên đăng nhập hoặc mật khẩu")
+            return
+        }
+        console.log(listUserRegisters);
+            //kiểm tra xem email đã tồn tại hay chưa rồi mới push vào
+            let flag= true;
+            for (let i = 0; i< listUserRegisters.length; i++) {
+                    if(listUserRegisters[i].email == valueEmail&&listUserRegisters[i].password==valuePassword){
+                            console.log("dc rồi");
+                            window.location.href="./index.html"
+                            
+                            flag=false;
+                            // break;
+                           
+                    }else{
+                        alert("sai tên đăng nhập hoặc mật khẩu")
+                    }
+            }
+        }
+    </script>
+</body>
+</html>
